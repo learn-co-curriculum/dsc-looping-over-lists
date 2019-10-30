@@ -181,6 +181,13 @@ So, the preferred way of figuring out the number of iterations on a list when yo
 len(countries)
 ```
 
+
+
+
+    8
+
+
+
 Then we can turn this length into a successive list of elements in the following way:   
 
 First, create a range object:
@@ -190,12 +197,26 @@ First, create a range object:
 range(0, len(countries))
 ```
 
+
+
+
+    range(0, 8)
+
+
+
 And then convert this into a list:
 
 
 ```python
 list(range(0, len(countries)))
 ```
+
+
+
+
+    [0, 1, 2, 3, 4, 5, 6, 7]
+
+
 
 Note that the range object is marking the starting and ending point, and excluding the end.  So this works perfectly:
 
@@ -204,6 +225,16 @@ Note that the range object is marking the starting and ending point, and excludi
 for index in list(range(0, len(countries))):
     print(cities[index]+",", countries[index])
 ```
+
+    Zagreb, Croatia
+    District of Columbia, USA
+    Buenos Aires, Argentina
+    Paris, France
+    Rio de Janeiro, Brazil
+    Tokyo, Japan
+    Hanoi, Vietnam
+    Tel Aviv, Israel
+
 
 And as we add or subtract countries, we will still be iterating through our list elements.
 
@@ -214,6 +245,17 @@ cities.append('Mexico City')
 for index in list(range(0, len(countries))):
     print(cities[index]+",", countries[index])
 ```
+
+    Zagreb, Croatia
+    District of Columbia, USA
+    Buenos Aires, Argentina
+    Paris, France
+    Rio de Janeiro, Brazil
+    Tokyo, Japan
+    Hanoi, Vietnam
+    Tel Aviv, Israel
+    Mexico City, Mexico
+
 
 > Note: More conventionally, these contrived examples would employ the `enumerate()` method, but that is beyond the scope of the current lesson. At some point in the future, examine how this code snippet works:
 ```
@@ -231,12 +273,30 @@ for country in countries:
     print(country)
 ```
 
+    Croatia
+    USA
+    Argentina
+    France
+    Brazil
+    Japan
+    Vietnam
+    Israel
+    Mexico
+
+
 
 ```python
 ice_cream_flavors = ['Mint Chocolate Chip', 'Coffee', 'Cookie Dough', 'Fudge Mint Brownie', 'Vanilla Bean']
 for ice_cream_flavor in ice_cream_flavors:
     print('I love ' + ice_cream_flavor + ' ice cream!!')
 ```
+
+    I love Mint Chocolate Chip ice cream!!
+    I love Coffee ice cream!!
+    I love Cookie Dough ice cream!!
+    I love Fudge Mint Brownie ice cream!!
+    I love Vanilla Bean ice cream!!
+
 
 ## Summary
 
