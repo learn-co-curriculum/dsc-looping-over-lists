@@ -1,8 +1,9 @@
 
-# Looping Over Collections
+# Looping over Lists
 
 ## Introduction
-Loops allow us to iterate over each element in a collection, like a list. Perhaps we could already do that by writing out a line of code for each element in the collection, but that wouldn't be very efficient, would it? No, not at all. With loops, we can write one line of code that operates on each element in a collection. Pretty cool, right? Let's get started!
+
+Imagine you have a list and want to perform an operation on each element in this list. You could do that by selecting each list element individually and performing that operation, but that wouldn't be very efficient, would it? No, not at all. With **loops**, you can write just *one line of code* that operates on each element in a collection. Pretty cool, right? Let's get started!
 
 ## Objectives
 You will be able to:
@@ -165,7 +166,7 @@ for index in [0,1,2,3,4,5,6,7,8,9,10]:
 
     IndexError                                Traceback (most recent call last)
 
-    <ipython-input-9-14e8c74c6ab5> in <module>
+    <ipython-input-9-14e8c74c6ab5> in <module>()
           1 for index in [0,1,2,3,4,5,6,7,8,9,10]:
     ----> 2     print(cities[index]+",", countries[index])
     
@@ -180,13 +181,6 @@ So, the preferred way of figuring out the number of iterations on a list when yo
 len(countries)
 ```
 
-
-
-
-    8
-
-
-
 Then we can turn this length into a successive list of elements in the following way:   
 
 First, create a range object:
@@ -196,26 +190,12 @@ First, create a range object:
 range(0, len(countries))
 ```
 
-
-
-
-    range(0, 8)
-
-
-
 And then convert this into a list:
 
 
 ```python
 list(range(0, len(countries)))
 ```
-
-
-
-
-    [0, 1, 2, 3, 4, 5, 6, 7]
-
-
 
 Note that the range object is marking the starting and ending point, and excluding the end.  So this works perfectly:
 
@@ -224,16 +204,6 @@ Note that the range object is marking the starting and ending point, and excludi
 for index in list(range(0, len(countries))):
     print(cities[index]+",", countries[index])
 ```
-
-    Zagreb, Croatia
-    District of Columbia, USA
-    Buenos Aires, Argentina
-    Paris, France
-    Rio de Janeiro, Brazil
-    Tokyo, Japan
-    Hanoi, Vietnam
-    Tel Aviv, Israel
-
 
 And as we add or subtract countries, we will still be iterating through our list elements.
 
@@ -245,96 +215,11 @@ for index in list(range(0, len(countries))):
     print(cities[index]+",", countries[index])
 ```
 
-    Zagreb, Croatia
-    District of Columbia, USA
-    Buenos Aires, Argentina
-    Paris, France
-    Rio de Janeiro, Brazil
-    Tokyo, Japan
-    Hanoi, Vietnam
-    Tel Aviv, Israel
-    Mexico City, Mexico
-
-
 > Note: More conventionally, these contrived examples would employ the `enumerate()` method, but that is beyond the scope of the current lesson. At some point in the future, examine how this code snippet works:
 ```
 for idx, item in enumerate(['A', 'B', 'C']):
     print(idx, item)
 ```
-
-## Iterating through different datatypes
-
-So far our loop variable has always been an element of a list that is a number.  However, our loop variable can represent any data type.  For example, let's have the loop variable represent each of the countries directly:
-
-
-```python
-different_elements = ['A String', ["a", 'list', "of", 5, ["elements"]], {'this': "is a dictionary"}]
-for element in different_elements:
-    print(element)
-```
-
-    A String
-    ['a', 'list', 'of', 5, ['elements']]
-    {'this': 'is a dictionary'}
-
-
-Now that we know we can iterate through a list that contains multiple data types, let's explore iterating through a data type that's **not a list**. 
-
-Another collection we commonly will iterate over is a **dictionary**. Dictionaries differ from lists, on a high level, in that elements are **key, value pairs** instead of one single element. So, when we go through each item in a dictionary, we are actually working with a two-part element (with a key & value). Similarly to how we name a variable for the element in a list for a `for` loop, we name a variable for both the **key** and **value** when we iterate over a dictionary. However, in Python, we can't iterate directly over the dictionary, we iterate over the **items** of a dictionary, which are the key-value pairs.  Let's take a look at an example.
-
-
-```python
-example_dictionary = {'first_name': "Terrance", 'last_name': "KOAR", 'favorite_language': "Python"}
-print(example_dictionary.items())
-type(example_dictionary.items())
-```
-
-    dict_items([('first_name', 'Terrance'), ('last_name', 'KOAR'), ('favorite_language', 'Python')])
-
-
-
-
-
-    dict_items
-
-
-
-Here we can see this **dict_items** object looks almost like a list, but each item has **two** parts, the **key** and **value**. So, in our first iteration, the first **key** will be **first_name**, and the first **value** will be **Terrance**.
-
-
-```python
-for key, value in example_dictionary.items():
-    print("this is the key:", key)    
-    print("this is the value:", value, "\n")
-```
-
-    this is the key: first_name
-    this is the value: Terrance 
-    
-    this is the key: last_name
-    this is the value: KOAR 
-    
-    this is the key: favorite_language
-    this is the value: Python 
-    
-
-
-So, we can see that the **dict_items** object groups the key values together in a way that we can iterate over them and access them. We can even use them to inform our program to operate on keys and values in a certain way. Such as, the last name is inexplicably in all caps. Let's look at how we can rectify that and title case the last name when we print out the full name of the `example_dictionary` object.
-
-
-```python
-first_name = ""
-last_name = ""
-for key, value in example_dictionary.items():
-    if key == "last_name":
-        last_name = value.title()
-    if key == "first_name":
-        first_name = value
-print(first_name, last_name)
-```
-
-    Terrance Koar
-
 
 ## Conventional Naming Patterns
 
@@ -346,17 +231,6 @@ for country in countries:
     print(country)
 ```
 
-    Croatia
-    USA
-    Argentina
-    France
-    Brazil
-    Japan
-    Vietnam
-    Israel
-    Mexico
-
-
 
 ```python
 ice_cream_flavors = ['Mint Chocolate Chip', 'Coffee', 'Cookie Dough', 'Fudge Mint Brownie', 'Vanilla Bean']
@@ -364,13 +238,6 @@ for ice_cream_flavor in ice_cream_flavors:
     print('I love ' + ice_cream_flavor + ' ice cream!!')
 ```
 
-    I love Mint Chocolate Chip ice cream!!
-    I love Coffee ice cream!!
-    I love Cookie Dough ice cream!!
-    I love Fudge Mint Brownie ice cream!!
-    I love Vanilla Bean ice cream!!
-
-
 ## Summary
 
-In this lesson, we learned how to use loops to iterate through a collection of elements. We started with iterating through a list of numbers, and performed the same operation on each number. Then we saw how we can loop through the numbers and have each number be used to access a successive element from a separate list, like `countries`.  We then saw that to ensure our list of numbers matched the indices of our other list, we had to use the expression, `for element in list(range(0, len(list)))`. Finally, we introduced a naming convention that is commonly used when naming the variable for our loops when iterating over a collection that is a list of common elements (i.e. `ice_cream_flavor` for a list of `ice_cream_flavors`).
+In this lesson, we learned how to use loops to iterate through a list of elements. We started with iterating through a list of numbers, and performed the same operation on each number. Then we saw how we can loop through the numbers and have each number be used to access a successive element from a separate list, like `countries`.  We then saw that to ensure our list of numbers matched the indices of our other list, we had to use the expression, `for element in list(range(0, len(list)))`. Finally, we introduced a naming convention that is commonly used when naming the variable for our loops when iterating over a collection that is a list of common elements (i.e. `ice_cream_flavor` for a list of `ice_cream_flavors`).
